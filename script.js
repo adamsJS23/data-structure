@@ -30,7 +30,12 @@ const restaurant = {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
 };
-// WORKING WITH DESTRUCTURING
+
+// DESTRUCTURING OBJECTS
+const { name, openingHours, categories } = restaurant;
+console.log(name, openingHours, categories);
+
+//  DESTRUCTURING ARRAY
 const arr = [1, 2, 3, 4];
 const a = arr[0];
 const b = arr[1];
