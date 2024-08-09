@@ -90,6 +90,12 @@ let {
 } = hours;
 console.log(o, c);
 
+// SPREAD OPERATOR
+
+let arr=[2,5,6]
+let badNewArr=[1,...arr]
+console.log(badNewArr)
+console.log(...badNewArr)
 // //  DESTRUCTURING ARRAY
 // const arr = [1, 2, 3, 4];
 // const a = arr[0];
