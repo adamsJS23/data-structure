@@ -7,7 +7,7 @@ const flights =
 // Data needed for first part of the section
 const restaurant = {
   name: "Classico Italiano",
-  location: "Via Angelo Tavanti 23, Firenze, Italy",
+  locations: "Via Angelo Tavanti 23, Firenze, Italy",
   categories: ["Italian", "Pizzeria", "Vegetarian", "Organic"],
   starterMenu: ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
   mainMenu: ["Pizza", "Pasta", "Risotto"],
@@ -26,45 +26,100 @@ const restaurant = {
       close: 24,
     },
   },
+  guest: {
+    snoop: {
+      man: "snoop",
+      woman: "Dog wife",
+    },
+    cent: {
+      man: "50cent",
+      woman: "50 wife",
+    },
+  },
   order(starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
+  // DESTRUCTURING OBJECT WITH DEFAULT VALUES
+  orderDelivery({ address, time = "20:00", starterIndex = 0, mainIndex = 1 }) {
+    console.log(
+      `You order ${this.starterMenu[starterIndex]} with ${this.mainMenu[mainIndex]} at ${time} to be deliverd in ${address}`
+    );
+  },
 };
 
+restaurant.orderDelivery({
+  address: "Via genova 234",
+  time: "10:30",
+  starterIndex: 1,
+  mainIndex: 0,
+});
+
+restaurant.orderDelivery({
+  address: "Via genova 234",
+});
+
 // DESTRUCTURING OBJECTS
-const { name, openingHours, categories } = restaurant;
-console.log(name, openingHours, categories);
+const { fri: friday, sat: saturday } = restaurant.openingHours;
+console.log(friday, saturday);
 
-//  DESTRUCTURING ARRAY
-const arr = [1, 2, 3, 4];
-const a = arr[0];
-const b = arr[1];
-const c = arr[1];
+// DESTRUCTURING OBJECTS
+// Default values
+const {
+  name,
+  openingHours: hours,
+  categories: tags,
+  menu: mnu = "Banana",
+} = restaurant;
+console.log(name, hours, tags, mnu);
 
-const [x, y, z] = arr;
-console.log(x, y, z);
-console.log(arr);
+// Mutating Object
+let a = 23,
+  b = 7;
+let obj = { a: 44, b: 65, c: 85 };
+({ a, b } = obj);
+console.log(a, b);
+// DESTRUCTURING NESTED OBJECT
 
-// SWITCHING VARIABLE USING DESTRUCTERING
-let [main, secondary] = restaurant.categories;
-console.log(main);
-console.log(secondary);
-[main, secondary] = [secondary, main];
+let { guest } = restaurant;
+let {
+  snoop: { man, woman },
+} = guest;
+console.log(man, woman);
+let {
+  fri: { open: o, close: c },
+} = hours;
+console.log(o, c);
 
-console.log(...restaurant.categories);
+// //  DESTRUCTURING ARRAY
+// const arr = [1, 2, 3, 4];
+// const a = arr[0];
+// const b = arr[1];
+// const c = arr[1];
 
-// DESTRUCTURING AN ARRAY RETURN BY A FUNCTION
-const [starterMenu, mainMenu] = restaurant.order(1, 2);
-console.log(starterMenu, mainMenu);
+// const [x, y, z] = arr;
+// console.log(x, y, z);
+// console.log(arr);
 
-// DESTRUCTURING NESTED ARRAY
-const nested = [1, 2, [3, 4, 5]];
-const [primo, , array] = nested;
-console.log(primo);
-console.log(array);
-const [w, e, [r, t, l]] = nested;
-console.log(w, e, r, t, l);
-// DEFAULT VALUE WITH DESTRUCTURING
-const arr2 = [2, 6, 9, 0];
-const [g, u, n, m, k = "ret"] = arr2;
-console.log(g, u, n, m, k);
+// // SWITCHING VARIABLE USING DESTRUCTERING
+// let [main, secondary] = restaurant.categories;
+// console.log(main);
+// console.log(secondary);
+// [main, secondary] = [secondary, main];
+
+// console.log(...restaurant.categories);
+
+// // DESTRUCTURING AN ARRAY RETURN BY A FUNCTION
+// const [starterMenu, mainMenu] = restaurant.order(1, 2);
+// console.log(starterMenu, mainMenu);
+
+// // DESTRUCTURING NESTED ARRAY
+// const nested = [1, 2, [3, 4, 5]];
+// const [primo, , array] = nested;
+// console.log(primo);
+// console.log(array);
+// const [w, e, [r, t, l]] = nested;
+// console.log(w, e, r, t, l);
+// // DEFAULT VALUE WITH DESTRUCTURING
+// const arr2 = [2, 6, 9, 0];
+// const [g, u, n, m, k = "ret"] = arr2;
+// console.log(g, u, n, m, k);
