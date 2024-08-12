@@ -58,6 +58,10 @@ restaurant.orderDelivery({
   address: "Via genova 234",
 });
 
+restaurant.orderPasta = function (ing1, ing2, ing3) {
+  console.log(`Here is your delicious ${ing1}, ${ing2} and ${ing3}`);
+};
+
 // DESTRUCTURING OBJECTS
 const { fri: friday, sat: saturday } = restaurant.openingHours;
 console.log(friday, saturday);
@@ -78,8 +82,8 @@ let a = 23,
 let obj = { a: 44, b: 65, c: 85 };
 ({ a, b } = obj);
 console.log(a, b);
-// DESTRUCTURING NESTED OBJECT
 
+// DESTRUCTURING NESTED OBJECT
 let { guest } = restaurant;
 let {
   snoop: { man, woman },
@@ -92,10 +96,47 @@ console.log(o, c);
 
 // SPREAD OPERATOR
 
-let arr=[2,5,6]
-let badNewArr=[1,...arr]
-console.log(badNewArr)
-console.log(...badNewArr)
+let arr = [2, 5, 6];
+let badNewArr = [1, ...arr];
+console.log(badNewArr);
+console.log(...badNewArr);
+console.log(...badNewArr);
+
+// PASSING MULTIPLE VALUE TO AN ARRAY
+function sum(...number) {
+  let total = 0;
+  number.forEach((num) => (total += num));
+  console.log(total);
+}
+
+sum(...badNewArr);
+let newMenu = [...restaurant.starterMenu, "Gnocchi"];
+console.log(newMenu);
+
+// CREATE A COPY OF ARRAY
+
+let newMainMenu = [...restaurant.mainMenu];
+console.log(newMainMenu);
+
+// JOIN 2 ARRAYS
+
+let menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(menu);
+
+//
+let ingredients = [
+  prompt("Let's make pasta ingredient 1"),
+  prompt("Let's make pasta ingredient 2"),
+  prompt("Let's make pasta ingredient 3"),
+];
+
+// Real world examples
+restaurant.orderPasta(...ingredients);
+
+// Iterables: Array, strings, sets,maps
+let str = "Adama";
+let letters = [...str, "", "G."];
+console.log(...letters);
 // //  DESTRUCTURING ARRAY
 // const arr = [1, 2, 3, 4];
 // const a = arr[0];
