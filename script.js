@@ -248,3 +248,30 @@ let correctGuest = restaurant.guest ?? 10;
 console.log("Correct guest", correctGuest);
 correctGuest = restaurant.guest || 10;
 console.log("Correct guest", correctGuest);
+
+let rest1 = {
+  name: "Capri",
+  owner: "Guebre Adama",
+};
+
+let rest2 = {
+  name: "La villagoise",
+  numGuest: 30,
+};
+// if (!rest1.numGuest) {
+//   rest1.numGuest = 20;
+// }
+// rest1.numGuest = rest1.numGuest || 20;
+// rest2.numGuest = rest2.numGuest || 20;
+
+rest1.numGuest ||= 10;
+rest2.numGuest ||= 10;
+
+rest1.numGuest ??= 10;
+rest2.numGuest ??= 10;
+
+rest1.owner &&='Anonymous'
+rest2.owner &&='Anonymous'
+
+console.log(rest1);
+console.log(rest2);
