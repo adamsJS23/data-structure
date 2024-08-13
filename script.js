@@ -45,6 +45,10 @@ const restaurant = {
       `You order ${this.starterMenu[starterIndex]} with ${this.mainMenu[mainIndex]} at ${time} to be deliverd in ${address}`
     );
   },
+  orderPizza(mainIngredient, ...otherIngredients) {
+    console.log("Main ingredients:",mainIngredient);
+    console.log("Others ingredients:", ...otherIngredients);
+  },
 };
 
 restaurant.orderDelivery({
@@ -129,7 +133,7 @@ console.log(menu);
 //   prompt("Let's make pasta ingredient 2"),
 //   prompt("Let's make pasta ingredient 3"),
 // ];
-let ingredients=['Basilico','Cipolla','Tonno']
+let ingredients = ["Basilico", "Cipolla", "Tonno"];
 
 // Real world examples
 restaurant.orderPasta(...ingredients);
@@ -142,6 +146,43 @@ console.log(newRestaurant.name, restaurant.name);
 let str = "Adama";
 let letters = [...str, "", "G."];
 console.log(...letters);
+
+// REST PATTERN
+arr = [1, 3, 4, ...[5, 6]];
+console.log(arr);
+// REST OPERATOR ON ARRAY
+let [g, h, ...others] = arr;
+console.log(g, h, others);
+
+let [favourite, prefered, ...otherFood] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
+
+console.log(favourite, prefered, otherFood);
+
+// REST OPERATOR ON OBJECT
+let { sat, ...weekDays } = restaurant.openingHours;
+console.log(restaurant.openingHours);
+console.log(sat, weekDays);
+
+// REST OPERATOR IN FUNCTION
+
+function sum(...numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+  }
+  console.log(sum);
+}
+
+sum(1, 2, 3);
+sum(2, 5, 7, 3, 8, 9);
+arr = [45, 89, 3, 9, 4];
+sum(...arr);
+
+restaurant.orderPizza("Pasta", "Cipolla", "Tono", "Basilico");
+restaurant.orderPizza("Cavolfiore");
 // //  DESTRUCTURING ARRAY
 // const arr = [1, 2, 3, 4];
 // const a = arr[0];
