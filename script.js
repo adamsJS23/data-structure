@@ -124,15 +124,20 @@ let menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
 console.log(menu);
 
 //
-let ingredients = [
-  prompt("Let's make pasta ingredient 1"),
-  prompt("Let's make pasta ingredient 2"),
-  prompt("Let's make pasta ingredient 3"),
-];
+// let ingredients = [
+//   prompt("Let's make pasta ingredient 1"),
+//   prompt("Let's make pasta ingredient 2"),
+//   prompt("Let's make pasta ingredient 3"),
+// ];
+let ingredients=['Basilico','Cipolla','Tonno']
 
 // Real world examples
 restaurant.orderPasta(...ingredients);
 
+const newRestaurant = { founder: "Giusseppe", ...restaurant, foundedIn: 1999 };
+console.log(newRestaurant);
+newRestaurant.name = "Festival des glaciers";
+console.log(newRestaurant.name, restaurant.name);
 // Iterables: Array, strings, sets,maps
 let str = "Adama";
 let letters = [...str, "", "G."];
