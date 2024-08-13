@@ -46,7 +46,7 @@ const restaurant = {
     );
   },
   orderPizza(mainIngredient, ...otherIngredients) {
-    console.log("Main ingredients:",mainIngredient);
+    console.log("Main ingredients:", mainIngredient);
     console.log("Others ingredients:", ...otherIngredients);
   },
 };
@@ -216,3 +216,29 @@ restaurant.orderPizza("Cavolfiore");
 // const arr2 = [2, 6, 9, 0];
 // const [g, u, n, m, k = "ret"] = arr2;
 // console.log(g, u, n, m, k);
+
+// SHORT CIRCUTTING
+console.log("---OR---");
+console.log(3 || "Adam");
+console.log("" || "Adam");
+console.log(true || "Adama");
+console.log(null || undefined);
+console.log("" || null || undefined || "hello" || true);
+let guest1 = restaurant.guest ? restaurant.guest : 10;
+console.log(guest1);
+// PRATICAL EXAMPLE OF SHORT CIRCUTTING WITH || OPERATOR
+
+guest1 = restaurant.guest1 || 10;
+console.log(guest1);
+console.log("--AND--");
+console.log(0 && "Adam");
+console.log("Adam" && false);
+console.log(true && "hello" && 0 && null);
+
+// PRATICAL EXAMPLE OF SHORT CIRCUTTING WITH && OPERATOR
+if (restaurant.orderPizza) {
+  restaurant.orderPizza("Pasta", "Banana", "Mango", "Aglio");
+}
+
+restaurant.orderPizza &&
+  restaurant.orderPizza("Pasta", "Ananas", "Miele", "Ruccola", "acqua");
