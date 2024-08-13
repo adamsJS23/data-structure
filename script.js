@@ -242,3 +242,9 @@ if (restaurant.orderPizza) {
 
 restaurant.orderPizza &&
   restaurant.orderPizza("Pasta", "Ananas", "Miele", "Ruccola", "acqua");
+
+restaurant.guest = 0;
+let correctGuest = restaurant.guest ?? 10;
+console.log("Correct guest", correctGuest);
+correctGuest = restaurant.guest || 10;
+console.log("Correct guest", correctGuest);
