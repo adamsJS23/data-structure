@@ -318,39 +318,48 @@ console.log(rest1);
 console.log(rest2);
 
 // CODING CHALLENGE #9.1
-
+// 1.
 const [players1, players2] = game.players;
 console.log("Team 1", players1);
 console.log("Team 2", players2);
-
+// 2.
 const [gk1, ...fieldPlayers1] = players1;
 const [gk2, ...fieldPlayers2] = players2;
-
+// 3.
 const allPlayers = [...players1, ...players2];
 console.log("All players", allPlayers);
-
+// 4.
 const finalPlayers1 = [...players1, "Thiago", "Cutinho", "Perisic"];
 console.log(finalPlayers1);
-
-const { team1, x: draw, team2 } = game.odds;
+// 5.
+// const { team1, x: draw, team2 } = game.odds;
+const {
+  odds: { team1, x: draw, team2 },
+} = game;
 console.log("Team1", team1, "Draw", draw, "Team2", team2);
-
+// 6.
 game.printGoals = function (...playersName) {
   console.log(playersName);
-  playersName.forEach((name) => {
-    if (this.scored.includes(name)) {
-      console.log(`${name} scored 1 Goal`);
-    } else console.log(`${name} didn't scored `);
-  });
+  let goal = 0;
+  for (let i = 0; i < playersName.length; i++) {
+    for (let a = 0; a < game.scored.length; a++) {
+      playersName[i] === game.scored[a] && goal++;
+    }
+
+    console.log(
+      `${playersName[i]} scored ${goal} goal${goal <= 1 ? "" : "s"}.`
+    );
+    goal = 0;
+  }
 };
 
 game.printGoals("Gnarby", "Hummels", "Adam");
 game.printGoals(...game.scored);
 
+// 7.
 game.checkWinner = function (team1, team2) {
-  let winner = team1 < team2 ? "Team 1 won" : "Team 2 won";
-  winner = team1 < team2 || team2 < team1;
-  console.log(winner);
+  team1 < team2 && console.log("Team 1 is likely to win the game");
+  team2 < team1 && console.log("Team 2 is likely to win the game");
 };
 
 game.checkWinner(team1, team2);
