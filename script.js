@@ -363,3 +363,12 @@ game.checkWinner = function (team1, team2) {
 };
 
 game.checkWinner(team1, team2);
+
+// FOR OF LOOP
+console.log(menu);
+for (let item of menu.entries()) {
+  const [idx, value] = item;
+  console.log(`${idx + 1}: ${value}`);
+}
+
+console.log(...menu.entries())
