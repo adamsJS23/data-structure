@@ -44,6 +44,7 @@ const game = {
 // Data needed for a later exercise
 const flights =
   "_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30";
+const weekDay = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
 
 const openingHours = {
   thu: {
@@ -59,7 +60,6 @@ const openingHours = {
     close: 24,
   },
 };
-const weekDay = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
 // Data needed for first part of the section
 const restaurant = {
   name: "Classico Italiano",
@@ -390,3 +390,22 @@ for (let item of menu.entries()) {
 console.log(...menu.entries());
 
 console.log(restaurant.weekDays);
+
+// OPTIONAL CHAINING
+console.log(restaurant.openingHours.thu.open);
+restaurant.openingHours.mon && console.log(restaurant.openingHours.mon.open);
+console.log(restaurant.openingHours.mon?.open);
+
+const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+
+// OPTIONAL CHAINING ON PROPERTIES
+// Check if a property exist
+for (const day of days) {
+  const open = restaurant.openingHours[day]?.open ?? "Closed";
+  console.log(
+    `On ${day} The restaurant is ${
+      open !== "Closed" ? `open form ${open}` : `${open}`
+    }  `
+  );
+}
+
