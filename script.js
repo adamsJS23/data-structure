@@ -416,3 +416,17 @@ console.log(
   restaurant.orderRiso?.("Banana", "Cipolla", "Gorgonzola") ||
     "This method doesn't exist"
 );
+
+
+// OPTIONAL CHAINING ON ARRAY
+// Check if one specific element of the array exist
+const users = [
+  { lastName: "Guebre", firstName: "Adam" },
+  { lastName: "Guebre", firstName: "Fatou" },
+  { lastName: "Guebre", firstName: "Mohamed" },
+  { lastName: "Guebre", firstName: "Firdwas" },
+];
+
+console.log(users[0]?.firstName);
+console.log(users[3]?.lastName)
+console.log(users[5]?.lastName||'This user doesn\'t exist')
