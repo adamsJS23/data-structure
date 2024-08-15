@@ -417,7 +417,6 @@ console.log(
     "This method doesn't exist"
 );
 
-
 // OPTIONAL CHAINING ON ARRAY
 // Check if one specific element of the array exist
 const users = [
@@ -428,5 +427,32 @@ const users = [
 ];
 
 console.log(users[0]?.firstName);
-console.log(users[3]?.lastName)
-console.log(users[5]?.lastName||'This user doesn\'t exist')
+console.log(users[3]?.lastName);
+console.log(users[5]?.lastName || "This user doesn't exist");
+
+// LOOPING OVER OBJECTS
+// Properties name
+const properties = Object.keys(restaurant.openingHours);
+const property = Object.entries(restaurant.openingHours);
+console.log(properties);
+console.log(property);
+for (const day of Object.keys(restaurant.openingHours)) {
+  console.log(day);
+}
+
+console.log(`The restaurant is opened ${properties.length} days in a week`);
+
+// LOOPING OVER OBJECTS
+// Properties value
+for (const day of Object.values(restaurant.openingHours)) {
+  const { open, close } = day;
+  console.log(open, close);
+}
+
+// LOOPING OVER OBJECTS
+// Properties names and values
+
+for (const day of Object.entries(restaurant.openingHours)) {
+  const [dayName, { open, close }] = day;
+  console.log(`On ${dayName} we are open from ${open} to ${close}`)
+}
