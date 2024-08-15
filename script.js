@@ -409,3 +409,10 @@ for (const day of days) {
   );
 }
 
+// OPTIONAL CHAINING ON METHOD
+// Check if a method exist
+restaurant.orderPizza?.("Banana", "Cipolla", "Gorgonzola");
+console.log(
+  restaurant.orderRiso?.("Banana", "Cipolla", "Gorgonzola") ||
+    "This method doesn't exist"
+);
