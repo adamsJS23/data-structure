@@ -454,5 +454,93 @@ for (const day of Object.values(restaurant.openingHours)) {
 
 for (const day of Object.entries(restaurant.openingHours)) {
   const [dayName, { open, close }] = day;
-  console.log(`On ${dayName} we are open from ${open} to ${close}`)
+  console.log(`On ${dayName} we are open from ${open} to ${close}`);
 }
+
+// CODING CHALLENGE #9.2
+// const game = {
+//   team1: "Bayern Munich",
+//   team2: "Borrussia Dortmund",
+//   players: [
+//     [
+//       "Neuer",
+//       "Pavard",
+//       "Martinez",
+//       "Alaba",
+//       "Davies",
+//       "Kimmich",
+//       "Goretzka",
+//       "Coman",
+//       "Muller",
+//       "Gnarby",
+//       "Lewandowski",
+//     ],
+//     [
+//       "Burki",
+//       "Schulz",
+//       "Hummels",
+//       "Akanji",
+//       "Hakimi",
+//       "Weigl",
+//       "Witsel",
+//       "Hazard",
+//       "Brandt",
+//       "Sancho",
+//       "Gotze",
+//     ],
+//   ],
+//   score: "4:0",
+//   scored: ["Lewandowski", "Gnarby", "Lewandowski", "Hummels"],
+//   date: "Nov 9th, 2037",
+//   odds: {
+//     team1: 1.33,
+//     x: 3.25,
+//     team2: 6.5,
+//   },
+// };
+// 1.
+for (const [idx, value] of game.scored.entries()) {
+  console.log(`Goal ${idx + 1} : ${value}`);
+}
+
+// 2.
+let avg = 0;
+for (const entry of Object.values(game.odds)) {
+  console.log(entry);
+  avg += entry / Object.values(game.odds).length;
+}
+
+console.log(`Average odd is ${avg}`);
+
+// 3.
+for (const [key, value] of Object.entries(game.odds)) {
+  const teamName = game[key] || "draw";
+  console.log(`Odd of victory ${teamName} is ${value}`);
+}
+
+// 4. BONUS
+// Create and fill tempScored array with players who scores
+const tempScored = [];
+for (let i = 0; i < game.scored.length; i++) {
+  if (!tempScored.includes(game.scored[i])) {
+    tempScored.push(game.scored[i]);
+  } else {
+    continue;
+  }
+}
+const scorers = {};
+console.log(tempScored);
+// Looping over tempScored to find to find how many occurance we have
+let numGoal = 0;
+for (const player of tempScored) {
+  for (const scoredPlayer of game.scored) {
+    if (player === scoredPlayer) numGoal++;
+  }
+  scorers[player] = numGoal;
+  numGoal = 0;
+}
+
+console.log(scorers);
+
+game.scorers = scorers;
+console.log(game)
