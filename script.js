@@ -543,4 +543,61 @@ for (const player of tempScored) {
 console.log(scorers);
 
 game.scorers = scorers;
-console.log(game)
+console.log(game);
+
+// wWORKING WITH STRING
+const airline = "TAP Air Portugal";
+const plane = "A320";
+
+console.log(plane[0]);
+console.log(plane.length);
+console.log("SelectAir".length);
+console.log(plane.indexOf("A"));
+console.log(airline.indexOf("r"));
+console.log(airline.lastIndexOf("r"));
+console.log(airline.indexOf("Portugal"));
+console.log(airline.slice(4, 7));
+console.log(airline.slice(0, airline.indexOf(" ")));
+console.log(airline.slice(airline.lastIndexOf(" ") + 1));
+
+console.log(airline.slice(-2));
+console.log(airline.slice(1, -1));
+
+function checkMiddleSeat(seat) {
+  const seatLine = seat.slice(-1);
+
+  seatLine === "B" || seatLine === "E"
+    ? console.log(`${seat} is a middle seat`)
+    : console.log(`${seat} is not a middle seat`);
+}
+
+checkMiddleSeat("11B");
+checkMiddleSeat("1A");
+checkMiddleSeat("2E");
+
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+
+const passenger = "JoNaS";
+const passengerLowerCase = passenger.toLowerCase();
+const passengerCorrect =
+  passenger[0].toUpperCase() + passenger.slice(1).toLowerCase();
+console.log(passengerCorrect);
+
+const email = "hello@jonas.io";
+const logInEmail = " helLo@joNas.io \n";
+console.log(logInEmail);
+const normalizedEmail = logInEmail.trim().toLowerCase();
+console.log(normalizedEmail);
+
+
+// REPLACING
+
+const priceUK='236,75£'
+const priceUS=priceUK.replace('£','$').replace(',','.')
+console.log(priceUS);
+
+const boarding='All the passenger come door 23. Boading to door 23.';
+// const boardingOk=boarding.replace('door','gate')
+const boardingOk=boarding.replaceAll('door','gate')
+console.log(boardingOk);
