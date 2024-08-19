@@ -612,20 +612,40 @@ if (newPlane.startsWith("Air") && newPlane.endsWith("neo")) {
 
 // Practice exercise
 function checkBagage(luggage) {
+  console.log(luggage);
   const dangerousObject = ["knife", "gun", "arrow", "c4"];
   let isDangerous = false;
   dangerousObject.forEach((object) => {
     if (luggage.toLowerCase().includes(object)) {
       console.log(`Your lugguage includes ${object} and is not allowed`);
       isDangerous = true;
-      return
+      return;
     }
   });
 
-  if(!isDangerous){
-    console.log('Your luaggage is dangerous object free, Check In');
+  if (!isDangerous) {
+    console.log("Your luaggage is dangerous object free, Check In");
   }
 }
 
-checkBagage("I have a gun inside my laguage");
-checkBagage('I have clothes, shoes and pants')
+checkBagage("I have a gun inside my laguage".slice(8, 12).trim());
+checkBagage("I have clothes, shoes and pants");
+checkBagage("I have clothes, shoes and pants".slice(1, 7).trim());
+const newStr = "This+is+a+beautiful+day".split("+");
+console.log(newStr);
+const newName = "Guebre Adama";
+const [lastName, firstName] = newName.split(" ");
+console.log(lastName, firstName);
+const joinedName = ["Mr.", firstName, lastName.toUpperCase()].join(" ");
+console.log(joinedName);
+
+function capitalizedName(names) {
+  const splitedNames = names.split(" ");
+  splitedNames.forEach((name, i) => {
+    splitedNames[i] = name.slice(0, 1).toUpperCase() + name.slice(1);
+  });
+  console.log(splitedNames.join(" "));
+}
+
+capitalizedName("Guebre Adama");
+capitalizedName("sam remy dasislva");
