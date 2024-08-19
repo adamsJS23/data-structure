@@ -590,14 +590,42 @@ console.log(logInEmail);
 const normalizedEmail = logInEmail.trim().toLowerCase();
 console.log(normalizedEmail);
 
-
 // REPLACING
 
-const priceUK='236,75£'
-const priceUS=priceUK.replace('£','$').replace(',','.')
+const priceUK = "236,75£";
+const priceUS = priceUK.replace("£", "$").replace(",", ".");
 console.log(priceUS);
 
-const boarding='All the passenger come door 23. Boading to door 23.';
+const boarding = "All the passenger come door 23. Boading to door 23.";
 // const boardingOk=boarding.replace('door','gate')
-const boardingOk=boarding.replaceAll('door','gate')
+const boardingOk = boarding.replaceAll("door", "gate");
 console.log(boardingOk);
+
+const newPlane = "Airbus A320neo";
+console.log(newPlane.includes("A320"));
+console.log(newPlane.startsWith("Air"));
+console.log(newPlane.endsWith("neo"));
+
+if (newPlane.startsWith("Air") && newPlane.endsWith("neo")) {
+  console.log("The plane is part of the new Airbus family");
+}
+
+// Practice exercise
+function checkBagage(luggage) {
+  const dangerousObject = ["knife", "gun", "arrow", "c4"];
+  let isDangerous = false;
+  dangerousObject.forEach((object) => {
+    if (luggage.toLowerCase().includes(object)) {
+      console.log(`Your lugguage includes ${object} and is not allowed`);
+      isDangerous = true;
+      return
+    }
+  });
+
+  if(!isDangerous){
+    console.log('Your luaggage is dangerous object free, Check In');
+  }
+}
+
+checkBagage("I have a gun inside my laguage");
+checkBagage('I have clothes, shoes and pants')
