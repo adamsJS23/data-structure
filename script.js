@@ -631,6 +631,8 @@ function checkBagage(luggage) {
 checkBagage("I have a gun inside my laguage".slice(8, 12).trim());
 checkBagage("I have clothes, shoes and pants");
 checkBagage("I have clothes, shoes and pants".slice(1, 7).trim());
+
+// SPLIT METHOD
 const newStr = "This+is+a+beautiful+day".split("+");
 console.log(newStr);
 const newName = "Guebre Adama";
@@ -649,3 +651,17 @@ function capitalizedName(names) {
 
 capitalizedName("Guebre Adama");
 capitalizedName("sam remy dasislva");
+
+// PADDING A STRING
+const message = "Go to gate 23";
+console.log(message.padStart(25, "#").padEnd(40, "]"));
+console.log(message.padEnd(25, "@").padStart(40, "£"));
+
+function maskCreditCard(number) {
+  number = number + "";
+  const lastDigit = number.slice(-4);
+  console.log("This is your credit card masked", lastDigit.padStart(number.length, "#"));
+}
+maskCreditCard(12788888888888888);
+maskCreditCard(127884765);
+maskCreditCard(1270089);
