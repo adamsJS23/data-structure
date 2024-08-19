@@ -660,8 +660,42 @@ console.log(message.padEnd(25, "@").padStart(40, "£"));
 function maskCreditCard(number) {
   number = number + "";
   const lastDigit = number.slice(-4);
-  console.log("This is your credit card masked", lastDigit.padStart(number.length, "#"));
+  console.log(
+    "This is your credit card masked",
+    lastDigit.padStart(number.length, "#")
+  );
 }
 maskCreditCard(12788888888888888);
 maskCreditCard(127884765);
 maskCreditCard(1270089);
+
+const message2 = "Bad weather... All departures are delayed... \n";
+console.log(message2.repeat(5));
+
+function planeInLine(n) {
+  console.log(`There are ${n} planes waiting ${"🛫".repeat(n)}`);
+}
+
+planeInLine(7);
+planeInLine(4);
+planeInLine(12);
+
+// CHALLENGE #9.4
+const data =
+  "underscore_score\nfirst_name\nsome_variables\ncalculate_AGE\ndelayed_departure ";
+
+function setCamelCase(data) {
+  const splitedData = data.split("\n");
+  for (const [idx, variable] of splitedData.entries()) {
+    const [name1, name2] = variable.split("_");
+    const camelCase =
+      name1.toLowerCase() +
+      name2[0].toUpperCase() +
+      name2.slice(1).toLowerCase();
+    console.log(
+      `${camelCase.padEnd(25,' ')}${"⚡".repeat(idx + 1)}`
+    );
+  }
+}
+
+setCamelCase(data);
