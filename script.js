@@ -702,14 +702,15 @@ const flights =
 
 console.log(flights.split("+"));
 
+const cutFirtsTreeLetters = (word) => word.slice(0, 3).toUpperCase();
+const trimflight = (flight) => flight.replaceAll("_", " ").trim();
+
 for (const item of flights.split("+")) {
   const [flight, form, to, time] = item.split(";");
   const output = `${
-    flight.replaceAll("_", " ").trim().startsWith("Delayed") ? "🥹" : ""
-  } ${flight.replaceAll("_", " ")} form ${form
-    .slice(0, 3)
-    .toUpperCase()} to ${to.slice(0, 3).toUpperCase()} at (${time})`.padStart(
-    48
-  );
+    trimflight(flight).startsWith("Delayed") ? "🥹" : ""
+  } ${trimflight(flight)} form ${cutFirtsTreeLetters(
+    form
+  )} to ${cutFirtsTreeLetters(to)} at (${time})`.padStart(48);
   console.log(output);
 }
