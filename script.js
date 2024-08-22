@@ -42,8 +42,7 @@ const game = {
 };
 
 // Data needed for a later exercise
-const flights =
-  "_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30";
+
 const weekDay = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
 
 const openingHours = {
@@ -692,10 +691,25 @@ function setCamelCase(data) {
       name1.toLowerCase() +
       name2[0].toUpperCase() +
       name2.slice(1).toLowerCase();
-    console.log(
-      `${camelCase.padEnd(25,' ')}${"⚡".repeat(idx + 1)}`
-    );
+    console.log(`${camelCase.padEnd(25, " ")}${"⚡".repeat(idx + 1)}`);
   }
 }
 
 setCamelCase(data);
+
+const flights =
+  "_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30";
+
+console.log(flights.split("+"));
+
+for (const item of flights.split("+")) {
+  const [flight, form, to, time] = item.split(";");
+  const output = `${
+    flight.replaceAll("_", " ").trim().startsWith("Delayed") ? "🥹" : ""
+  } ${flight.replaceAll("_", " ")} form ${form
+    .slice(0, 3)
+    .toUpperCase()} to ${to.slice(0, 3).toUpperCase()} at (${time})`.padStart(
+    48
+  );
+  console.log(output);
+}
